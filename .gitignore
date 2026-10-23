@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+out/
+*.aep
+*.tif
+*.mp4
+*.wav
