@@ -71,6 +71,7 @@ Estudos de 20/10/2026 feitos com vídeos (autores conferidos) e com a documenta�
 | Luz e sombra dentro do After: tipos de luz, Material Options, sombra falsa, raio volumétrico, matchNames | `estudos/luz-no-after.md` |
 | Decidir a luz como diretor de fotografia: fonte motivada, contraste, esquemas, cor, atmosfera | `estudos/luz-cinematografica.md` |
 | Compor a profundidade (planos, valor tonal, 9:16) e copiar o estilo de uma referência (Leiter, Fan Ho, Deakins, Caravaggio...) | `estudos/referencias-visuais.md` |
+| Movimento de câmera suave (um null por movimento, sobreposto), easing por movimento, flyer em PSD virando 3D, foco em chave seguindo o alvo, glow na batida da música (estudo de 24/10/2026) | `estudos/movimento-de-camera.md` |
 
 **Quando os estudos brigam com o que foi medido aqui, vale o medido.** Já resolvido:
 - **Abertura:** as receitas de `referencias-visuais.md` sugerem 25-150; aqui o Classic 3D precisa de 350-420 e o Advanced 3D de ~90 (Referência rápida). Use as receitas só como proporção entre estilos (Leiter desfoca mais que Crewdson).
