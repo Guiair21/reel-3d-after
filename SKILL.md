@@ -71,6 +71,7 @@ Estudos de 20/10/2026 feitos com vídeos (autores conferidos) e com a documenta�
 | Luz e sombra dentro do After: tipos de luz, Material Options, sombra falsa, raio volumétrico, matchNames | `estudos/luz-no-after.md` |
 | Decidir a luz como diretor de fotografia: fonte motivada, contraste, esquemas, cor, atmosfera | `estudos/luz-cinematografica.md` |
 | Compor a profundidade (planos, valor tonal, 9:16) e copiar o estilo de uma referência (Leiter, Fan Ho, Deakins, Caravaggio...) | `estudos/referencias-visuais.md` |
+| Objeto girando que pousa sem dança, lente de vidro no formato real, cacos voando para a câmera, tipografia palavra a palavra, anéis de texto girando, letras recortadas, caneta escrevendo, explosão em formas 3D, trocas de cena em movimento (testado no AE 26.5, 24-25/10/2026) | `estudos/cenas-tipograficas-e-objetos.md` |
 | Movimento de câmera suave (um null por movimento, sobreposto), curvas de entrada, câmera e giro, desfoque dinâmico com wiggle, parallax com orbit null, estilo Vox automatizado, flyer em PSD virando 3D, foco em chave seguindo o alvo, glow na batida da música (estudos de 24 e 25/10/2026) | `estudos/movimento-de-camera.md` |
 
 **Quando os estudos brigam com o que foi medido aqui, vale o medido.** Já resolvido:
@@ -93,5 +94,7 @@ Ver `armadilhas.md` (todas vistas na prática). As que mais custam:
 - Mexer em Material Options de um modelo 3D → o After fecha na hora (o try não pega).
 - Lupa com disco branco dentro → reprovado: vidro amplia o que está atrás.
 - Vigia que apaga a trava `ae.lock` sem conferir o dono → derruba a trava da outra sessão.
+- Desacelerar vídeo pronto para caber a fala → movimento enrosca. Retemporizar no After; a voz nunca acelera.
+- Anel de texto com null pai girando → persiana. Fatias com expressões próprias (ver `armadilhas.md`, AE 26.5).
 
 Antes de entregar, confira o resultado contra o pedido original (folha de quadros, números do `medir_camera.py`, áudio em sincronia). A fonte da verdade das funções é `scripts/ae_3d_lib.jsx` via `//@include`; o cabeçalho dela mostra as globais que o script do projeto precisa definir antes, e `scripts/exemplo.jsx` é um projeto mínimo pronto para adaptar.

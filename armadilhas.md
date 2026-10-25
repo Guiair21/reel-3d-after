@@ -53,3 +53,26 @@
 - Referência que calibrou a skill (estilo Kaloyan): zoom mediano 0,078 %/q; lateral mediano 0,22, p90 2,6 px/q; parado 33 %; tranco 0,49; pico 3,97 (largura 270).
 - Versão só com zoom: lateral p90 0,12 → "zoom digital". Versão com deslize forte: pico 6,6 → brusco. Versão que bateu: entra 170 / tau 0,38 / sai 150.
 - Cena da lupa na referência: câmera parada, só os objetos se movem. Tela final (CTA): avanço rápido na entrada (zoom ~7 %/q caindo).
+
+## AE 26.5 (medido em 24 e 25/10/2026)
+- **matchName inexistente derruba o After sem erro.** Em camada 2D a rotação é `ADBE Rotate Z` (não existe `ADBE Rotation`). Antes de usar um nome novo, sonde com um .jsx que grava o log abrindo e fechando o arquivo a cada linha (assim o log mostra até onde chegou).
+- **Malha paramétrica (26.3+):** `comp.layers.addParametricMesh(nome, ParametricMeshType.SPHERE|CUBE|CONE|TORUS|CYLINDER|PLANE)` funciona; LER `parametricMeshOptions` derruba o After (dimensione pela escala). Cor: `ly.property("ADBE3D Para Mat Parade").property(1).property("ADBE3D Base Color")`. Ligar "Projeta sombras" na malha derrubou: sombra falsa (mancha desfocada no chão que segue a forma).
+- **Texto 3D com volume (Advanced 3D):** `ly.property("ADBE Extrsn Options Group")` com `ADBE Extrsn Depth`, `ADBE Bevel Styles`, `ADBE Bevel Depth`. Só a luz principal mudou a imagem; contraluz e pontos extras não fizeram efeito (deixe a chave de lado e à frente). Preto puro chapa: use grafite (~0,13) com especular.
+- **Fonte instalada que o After não enxerga:** `td.font` devolve o nome pedido mesmo quando a fonte falta, então o log engana. Confira com `app.fonts.getFontsByPostScriptName("Nome")` (vazio = não existe). Visto: Kalam-Bold e UbuntuMono-Bold ausentes, Kalam-Regular presente (use `td.fauxBold = true`).
+- **CC Cylinder não serve para anel de texto:** encolhe o cilindro ao tamanho da camada e espreme o texto.
+- **Anel de texto em fatias, filhas de um null que gira:** a posição das fatias acompanha o giro do pai, mas a orientação não, e o anel vira "persiana" depois de ~30°. Funciona sem pai: cada fatia com expressões próprias de posição, Rotate Y e opacidade em função do ângulo `g = (time - t0) * graus/s`. Sinal: Rotate Y positivo leva x para -z, então a fatia usa rotação `-th` e o ângulo no mundo é `th - g`.
+- **Fatia de costas fica fraca por expressão** (`Math.cos(angulo) > 0.05 ? 100 : 22`); com o sinal errado, as fatias da frente somem e o anel parece vazio.
+- **Desfoque de profundidade em camadas fatiadas** abre riscas escuras nas emendas (cada fatia borra a própria borda): sobrepor 6 px entre fatias e usar abertura baixa.
+- **Nunca desacelerar vídeo pronto com ffmpeg `minterpolate=blend`** para caber uma fala: o movimento enrosca (irregularidade 0,47 contra 0,04 a 0,09). Retemporize no After.
+- **Escrita à mão:** a revelação é uma máscara retangular por linha cuja borda direita fica poucos px atrás da ponta da caneta, na MESMA função de tempo e no mesmo plano 3D do texto; o Linear Wipe com velocidade fixa sai fora de sincronia quando as linhas são retemporizadas. A ponta da caneta é a origem da camada; corpo inclinado ~30° com sombra desfocada no papel.
+- **Rotina que aperta Enter em janela do After:** só na janela de reparo de falhas (título "Opções de reparo de falhas"; às vezes vem sem título: use PostMessage). Enter no aviso "salvar alterações?" abre o "Salvar como" e trava o script.
+- **After que o Stop-Process não fecha** ("não há ocorrência da tarefa"): `Get-CimInstance Win32_Process -Filter "Name='AfterFX.exe'" | Invoke-CimMethod -MethodName Terminate`.
+- **Vários agentes no mesmo After:** uma trava `ae.lock` numa pasta fixa, com o nome de quem usa evita render com projeto trocado; quem encontra trava alheia espera, não apaga.
+- **Render longo morre por memória:** blocos de 70 a 80 quadros (`-s`/`-e`) na mesma pasta.
+
+## Áudio de Reel narrado (25/10/2026)
+- **A voz é o relógio.** Nunca acelerar a fala (nem `atempo`, nem speed acima de 1,05 no ElevenLabs); quando não cabe, o trecho do vídeo cresce na origem.
+- **Frase inteira, não palavra recortada:** gerar a frase natural e mover os cortes da tela para o início de cada palavra. O Whisper erra o tempo de palavra curta ("não", "só") e atrasa até 0,8 s no começo da fala: meça pelo envelope de energia.
+- **Pergunta no texto:** confira a entonação pela altura (librosa.pyin) no fim da frase e escolha a tomada que sobe.
+- **Trilha:** música com batida (não pad/drone). Para dois drops caírem em dois golpes do vídeo, estique a música com `atempo` (2% não muda o caráter) em vez de emendar.
+- **Pixabay** responde 403 (Cloudflare) para curl; o Playwright passa e baixa pelo evento de download (`page.waitForEvent('download')` + `saveAs`).
