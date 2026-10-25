@@ -1,6 +1,6 @@
 # Legendas 3D por cima de filmagem real (talking head)
 
-Quando usar: o usuário manda um vídeo de alguém falando para a câmera (montado num editor ou gravado direto) e quer legenda "estilo Barsol/Kaloyan": palavra grande, 3D de verdade, foco que puxa, nas partes escuras do quadro. Testado em out/2026 (AE 26.5, Classic 3D).
+Quando usar: o usuário manda um vídeo de alguém falando para a câmera (montado num editor ou gravado direto) e quer legenda de motion design: palavra grande, 3D de verdade, foco que puxa, nas partes escuras do quadro. Testado em out/2026 (AE 26.5, Classic 3D).
 
 ## Como montar
 1. **Base sem legenda.** O que não é legenda (b-roll, cartões, transições) sai pronto de outra ferramenta (HyperFrames, Remotion, ffmpeg, editor de vídeo) como `base.mp4` 1080x1920 30 qps. No After a base entra **2D, embaixo de tudo**: não sofre câmera, luz nem desfoque.

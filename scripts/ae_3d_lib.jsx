@@ -170,7 +170,7 @@
         var op = cam.property("ADBE Camera Options Group");
         op.property("ADBE Camera Zoom").setValue(D);
         op.property("ADBE Camera Depth of Field").setValue(1);
-        op.property("ADBE Camera Aperture").setValue(foco && foco.abertura || 350); // valor real (350-420 no estilo Kaloyan)
+        op.property("ADBE Camera Aperture").setValue(foco && foco.abertura || 350); // valor real (350-420 na referência medida)
         try { op.property("ADBE Camera Blur Level").setValue(foco && foco.nivel || 100); } catch (x) { } // oculto no Advanced 3D
         var tg = cam.property("ADBE Transform Group");
         tg.property("ADBE Orientation").setValue([0, 0, 0]);

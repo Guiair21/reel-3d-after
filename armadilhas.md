@@ -50,7 +50,7 @@
 - ffmpeg `mergeplanes` exige `setsar=1` em todos os planos; escalar o azul para baixo deixa moldura escura: escalar vermelho e verde para cima e recortar.
 
 ## Movimento (medido por fluxo óptico)
-- Referência que calibrou a skill (estilo Kaloyan): zoom mediano 0,078 %/q; lateral mediano 0,22, p90 2,6 px/q; parado 33 %; tranco 0,49; pico 3,97 (largura 270).
+- Referência que calibrou a skill: zoom mediano 0,078 %/q; lateral mediano 0,22, p90 2,6 px/q; parado 33 %; tranco 0,49; pico 3,97 (largura 270).
 - Versão só com zoom: lateral p90 0,12 → "zoom digital". Versão com deslize forte: pico 6,6 → brusco. Versão que bateu: entra 170 / tau 0,38 / sai 150.
 - Cena da lupa na referência: câmera parada, só os objetos se movem. Tela final (CTA): avanço rápido na entrada (zoom ~7 %/q caindo).
 

@@ -55,7 +55,7 @@ Onde os autores divergem. Escolha pela condição, não por gosto.
 - **Movimento de câmera.** Avanço em Z (MDMZ, LHTES), órbita (SonduckFilm), Ponto de interesse + Posição (Elias). Avanço em Z puro é o que mais vira "zoom digital" (ver abaixo).
 
 ## Cuidados
-- **"Parece zoom digital".** Câmera avançando reto em Z sobre poucos planos parece só um zoom. Deslize lateral ou órbita leve mostra mais a diferença de velocidade entre os planos. É a mesma lição da referência Kaloyan no `SKILL.md`: meça antes de copiar.
+- **"Parece zoom digital".** Câmera avançando reto em Z sobre poucos planos parece só um zoom. Deslize lateral ou órbita leve mostra mais a diferença de velocidade entre os planos. É a mesma lição da referência medida no `SKILL.md`: meça antes de copiar.
 - **Planos com o mesmo movimento.** Se as camadas andam juntas, aumente a distância entre elas em Z (INTEGNITY @20:49).
 - **Borda aparecendo.** Zoom ou rotação demais expõe a borda da foto; reduza o movimento ou escale o fundo (INTEGNITY @21:20).
 - **Pré-comp dentro da cena 3D.** Confira o Collapse Transformations da pré-comp quando ela parecer chapada ou sumir com a câmera. MDMZ mexe nele no trem (@16:14), mas a legenda automática diz "desligar" e o comportamento esperado do AE é o contrário (ligado = camadas 3D de dentro respondem à câmera de fora). Está em `parallax-a-conferir.md`. Fato da Adobe (ver `luz-no-after.md`, erros comuns): com o interruptor ligado a pré-comp perde o modo de mesclagem e o motion blur próprios.

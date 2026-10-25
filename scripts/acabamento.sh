@@ -1,5 +1,5 @@
 #!/bin/bash
-# Acabamento do reel-3d-after: cor (sombras para vermelho-magenta, calibradas na referência Kaloyan), aberração cromática
+# Acabamento do reel-3d-after: cor (sombras para vermelho-magenta, calibradas na referência medida), aberração cromática
 # radial (vermelho 0,6% e verde 0,3% ampliados sobre o azul: a franja cresce para a borda, sem moldura) e grão fino.
 # Uso: bash acabamento.sh <entrada (padrão ffmpeg, ex. out/seq/f_%05d.tif)> <saida.mp4> [audio: .m4a/.mp4/.wav]
 #   SO_LENTE=1 bash acabamento.sh ...   -> sem colorbalance/curves (por cima de filmagem já com cor aprovada:

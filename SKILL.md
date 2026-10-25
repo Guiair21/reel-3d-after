@@ -16,7 +16,7 @@ Imagem recortada vira cena 3D no After Effects 26.x montada por ExtendScript: ca
 
 ## Fluxo
 1. **Estudar a referência:** `yt-dlp`, transcrição, quadros em resolução cheia, cor do fundo e das sombras medida no pixel. Cada detalhe da referência é uma decisão de quem fez; o áudio costuma explicar o método.
-2. **Medir a câmera da referência:** `python -I scripts/medir_camera.py ref.mp4 --curva 0 5` e o resumo. Anotar: zoom %/quadro, deslize lateral, pico de velocidade, % parado, tranco. Na referência que calibrou esta skill (estilo Kaloyan): zoom ~0,08 %/q, lateral p90 ~2,6, pico ~4 px/q (em 270 px de largura), entrada deslizando de lado com freada exponencial (~1 s), saída acelerando para o mesmo lado.
+2. **Medir a câmera da referência:** `python -I scripts/medir_camera.py ref.mp4 --curva 0 5` e o resumo. Anotar: zoom %/quadro, deslize lateral, pico de velocidade, % parado, tranco. Na referência que calibrou esta skill: zoom ~0,08 %/q, lateral p90 ~2,6, pico ~4 px/q (em 270 px de largura), entrada deslizando de lado com freada exponencial (~1 s), saída acelerando para o mesmo lado.
 2b. **Medir a cor:** `python -I scripts/medir_cor.py ref.mp4` (fundo e sombras RGB). Fundo que não é cinza 239: passar `--fundo` ao `medir_camera.py` e trocar `FUNDO` no script.
 2c. **Narração (opcional):** voz clonada só com autorização expressa de quem é a voz, **para esta peça**. Gerar 2 tomadas por fala e conferir cada uma no Whisper. `python -I scripts/preparar_voz.py --vozes <pasta das tomadas> --falas falas.txt --saida-voz <pasta> --json falas.json` (falas.txt = uma linha `tomada|texto certo` por cena) corta silêncio, acelera 1,12×, mede com large-v3 e grava `falas.json` = `{dur, cenas:[{ini, dur, voz, texto, palavras:[{w,s,e}]}]}`, que o script do After lê com `eval` e a função `em(cena, "palavra")` usa para sincronizar. O áudio final (voz + trilha + efeitos) é mixado à parte e entra no `acabamento.sh`.
 3. **Imagens:** objeto isolado em fundo cinza (qualquer gerador de imagem que aceite referência; Nano Banana deu bons recortes). `achatar_fundo.py` → `recortar_brancos.py` (rembg, sombra no alfa) → `lentes_transparentes.py <pasta> lupa [--tira-sombra oculos]` para vidro (objeto que voa: tirar a sombra). Objeto que gira: gerar 3-4 ângulos com a imagem original como referência e trocar durante o giro (motion blur esconde a emenda).
@@ -73,6 +73,7 @@ Estudos de 20/10/2026 feitos com vídeos (autores conferidos) e com a documenta�
 | Compor a profundidade (planos, valor tonal, 9:16) e copiar o estilo de uma referência (Leiter, Fan Ho, Deakins, Caravaggio...) | `estudos/referencias-visuais.md` |
 | Objeto girando que pousa sem dança, lente de vidro no formato real, cacos voando para a câmera, tipografia palavra a palavra, anéis de texto girando, letras recortadas, caneta escrevendo, explosão em formas 3D, trocas de cena em movimento (testado no AE 26.5, 24-25/10/2026) | `estudos/cenas-tipograficas-e-objetos.md` |
 | Movimento de câmera suave (um null por movimento, sobreposto), curvas de entrada, câmera e giro, desfoque dinâmico com wiggle, parallax com orbit null, estilo Vox automatizado, flyer em PSD virando 3D, foco em chave seguindo o alvo, glow na batida da música (estudos de 24 e 25/10/2026) | `estudos/movimento-de-camera.md` |
+| **Estilo "objeto foto-realista quebrando":** objeto e cacos em PNG por camada, Z de cada plano, luz enevoada (feixe em Tela + Fractal Noise na mesma máscara + Exposição fora do feixe), camada de cores única, acabamento e substitutos dos plugins pagos. Lido num projeto de referência em 24/10/2026 | `estudos/metodo-objeto-quebrando.md` |
 
 **Quando os estudos brigam com o que foi medido aqui, vale o medido.** Já resolvido:
 - **Abertura:** as receitas de `referencias-visuais.md` sugerem 25-150; aqui o Classic 3D precisa de 350-420 e o Advanced 3D de ~90 (Referência rápida). Use as receitas só como proporção entre estilos (Leiter desfoca mais que Crewdson).
@@ -93,6 +94,8 @@ Ver `armadilhas.md` (todas vistas na prática). As que mais custam:
 - Tremor de câmera "para dar vida": a referência medida não tem. Só se a medição mostrar.
 - Mexer em Material Options de um modelo 3D → o After fecha na hora (o try não pega).
 - Lupa com disco branco dentro → reprovado: vidro amplia o que está atrás.
+- Caco de vidro feito com forma vetorial branca semitransparente → parece papel. Caco é PNG de vidro (borda escura, reflexo), um por camada, em Z diferente (`estudos/metodo-objeto-quebrando.md`).
+- Tentar chegar no foto-realismo com modelo 3D (Tripo, Sketchfab, Blender) → não chega; a referência usa imagem gerada e troca a versão quebrada dentro do salto de câmera borrado.
 - Vigia que apaga a trava `ae.lock` sem conferir o dono → derruba a trava da outra sessão.
 - Desacelerar vídeo pronto para caber a fala → movimento enrosca. Retemporizar no After; a voz nunca acelera.
 - Anel de texto com null pai girando → persiana. Fatias com expressões próprias (ver `armadilhas.md`, AE 26.5).
