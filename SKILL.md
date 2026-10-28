@@ -84,6 +84,11 @@ Estudos de 20/10/2026 feitos com vídeos (autores conferidos) e com a documenta�
 - **Nomes de efeito em pt-BR** nas receitas não foram conferidos no AE instalado. Por script, use matchName (tabelas de `lentes-e-foco.md` §10 e `luz-no-after.md` §9); os marcados "não conferido" pedem a sonda que está lá antes de gravar.
 - **Pessoa na foto:** recorte com ferramenta dedicada (removedor de fundo com revisão humana), não por máscara feita no script; a separação de camadas dos tutoriais é para cenário.
 
+## Vídeo horizontal estilo Vox para YouTube
+Modelo testado em `modelos/colagem-vox/` (ler o `LEIA-ME.md` antes): cartão de papel bege, círculo de cor atrás do assunto, recortes P&B com retícula, mão entrando pela borda, régua da série, câmera viva. Para 16:9 use `scripts/acabamento169.sh` (o `acabamento.sh` é 9:16). Divida em uma cena de teste aprovada + levas de 3 cenas por agente, em fila por causa da trava do After.
+- Pedido explícito de movimento vale mais que a medição da referência (a Vox ficava parada 93% do tempo).
+- Ao delegar a montagem, escreva no pedido: profundidade, DOF, sombra, luz, 3D e bastante movimento. "Profundidade leve" gera colagem chapada.
+
 ## Erros comuns
 Ver `armadilhas.md` (todas vistas na prática). As que mais custam:
 - Câmera só avançando em Z → "zoom digital". Deslizar de lado.

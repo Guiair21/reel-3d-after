@@ -76,3 +76,10 @@
 - **Pergunta no texto:** confira a entonação pela altura (librosa.pyin) no fim da frase e escolha a tomada que sobe.
 - **Trilha:** música com batida (não pad/drone). Para dois drops caírem em dois golpes do vídeo, estique a música com `atempo` (2% não muda o caráter) em vez de emendar.
 - **Pixabay** responde 403 (Cloudflare) para curl; o Playwright passa e baixa pelo evento de download (`page.waitForEvent('download')` + `saveAs`).
+
+## Vistas num tutorial horizontal estilo Vox (AE 26.5)
+- `TG(ly).property("ADBE Transform Group")` (pedir o grupo de transformação duas vezes) travou o After numa janela de erro que **não aparece no print**. Dispensar com ENTER na janela `#32770` e corrigir o script.
+- Matar o After para destravar → na abertura seguinte a janela "Opções de reparo de falhas" engole o primeiro `-r` e o render sai **com o projeto velho**. Conferir a folha do mp4 novo antes de aceitar.
+- Queda de internet mata o agente no meio da leva e deixa a trava órfã com o nome dele. Retomar o **mesmo** agente avisando que a trava é dele; ele reaproveita os .jsx/.aep já salvos.
+- Rótulo à direita perto da borda + câmera deslizando = texto cortado. Limite ~90% da largura.
+- Nota interna do plano aparecendo como texto na tela. Só vira texto o que está entre aspas no plano.
